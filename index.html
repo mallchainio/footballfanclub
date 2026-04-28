@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FootballFanClub (FBFC)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b1220;
+      color: #ffffff;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: #111a2e;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .nav a:hover {
+      opacity: 1;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #2d6cff;
+      color: #2d6cff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .hero {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.8;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #2d6cff;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #2d6cff;
+      color: #2d6cff;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .tokenomics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .box {
+      background: #111a2e;
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 220px;
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .bar {
+      height: 10px;
+      background: #1f2a44;
+      border-radius: 5px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: #2d6cff;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      opacity: 0.6;
+      background: #111a2e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="logo">FBFC</div>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#community">Community</a>
+      <a href="#">Roadmap</a>
+      <button class="lang-btn" onclick="toggleLang()">EN / 中文</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1 data-i18n="title">FootballFanClub (FBFC)</h1>
+    <p data-i18n="desc">
+      A community-driven digital asset for football fans worldwide. Built to reward participation, empower governance, and grow a global football ecosystem.
+    </p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="https://t.me/FBFC_TOKEN" target="_blank" data-i18n="join">Join Telegram</a>
+      <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank" data-i18n="whitepaper">Whitepaper</a>
+      <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank" data-i18n="bbs">BBS</a>
+    </div>
+  </div>
+
+  <div class="section" id="tokenomics">
+    <h2 data-i18n="tokenomics_title">Tokenomics</h2>
+
+    <div class="tokenomics">
+      <div class="box">
+        <h3>Marketing & Incentives (85%)</h3>
+        <div class="bar"><div class="fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Automatic Burn (10%)</h3>
+        <div class="bar"><div class="fill" style="width:10%"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Dividends (2%)</h3>
+        <div class="bar"><div class="fill" style="width:2%"></div></div>
+      </div>
+
+      <div class="box">
+        <h3>Liquidity (3%)</h3>
+        <div class="bar"><div class="fill" style="width:3%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="community">
+    <h2 data-i18n="community_title">Community</h2>
+    <p data-i18n="community_desc">Join our Telegram and become part of the FBFC football ecosystem.</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="https://t.me/FBFC_TOKEN" target="_blank">Telegram</a>
+      <a class="btn btn-secondary" href="https://x.com/FBFC_TOKEN" target="_blank">X (Twitter)</a>
+      <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank">BBS</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 FootballFanClub (FBFC). All rights reserved.
+  </div>
+
+</div>
+
+<script>
+const i18n = {
+  en: {
+    title: "FootballFanClub (FBFC)",
+    desc: "A community-driven digital asset for football fans worldwide. Built to reward participation, empower governance, and grow a global football ecosystem.",
+    join: "Join Telegram",
+    whitepaper: "Whitepaper",
+    bbs: "BBS",
+    tokenomics_title: "Tokenomics",
+    community_title: "Community",
+    community_desc: "Join our Telegram and become part of the FBFC football ecosystem."
+  },
+  zh: {
+    title: "足球粉丝俱乐部（FBFC）",
+    desc: "一个以足球粉丝为核心的社区型数字资产，致力于奖励参与、赋能治理并构建全球足球生态系统。",
+    join: "加入Telegram",
+    whitepaper: "白皮书",
+    bbs: "论坛",
+    tokenomics_title: "代币经济",
+    community_title: "社区",
+    community_desc: "加入我们的Telegram，成为FBFC足球生态的一部分。"
+  }
+};
+
+let currentLang = "en";
+
+function applyLang(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (i18n[lang][key]) el.innerText = i18n[lang][key];
+  });
+}
+
+function toggleLang() {
+  currentLang = currentLang === "en" ? "zh" : "en";
+  applyLang(currentLang);
+}
+
+const browserLang = navigator.language || navigator.userLanguage;
+if (browserLang.toLowerCase().includes("zh")) {
+  currentLang = "zh";
+}
+applyLang(currentLang);
+</script>
+
+</body>
+</html>
