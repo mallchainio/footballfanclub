@@ -83,7 +83,6 @@
     }
     .lang-btn:hover { background: #2d6cff; color: white; }
 
-    /* HERO - 高度优化 */
     .hero {
       position: relative;
       display: flex;
@@ -92,7 +91,7 @@
       align-items: center;
       padding: 90px 20px 70px;
       text-align: center;
-      min-height: 70vh;           /* ← 核心调整 */
+      min-height: 70vh;
     }
 
     .hero::before {
@@ -146,16 +145,13 @@
       color: #fff;
       box-shadow: 0 8px 25px rgba(45, 108, 255, 0.4);
     }
-    .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(45, 108, 255, 0.5); }
 
     .btn-secondary {
       background: transparent;
       border: 2px solid #2d6cff;
       color: #2d6cff;
     }
-    .btn-secondary:hover { background: #2d6cff; color: white; }
 
-    /* Stats - 更紧凑 */
     .stats {
       display: flex;
       justify-content: center;
@@ -175,42 +171,48 @@
     }
     .stat-label { font-size: 15px; opacity: 0.8; margin-top: 6px; }
 
-    /* Section */
     .section {
       padding: 70px 5% 80px;
       text-align: center;
     }
 
-    .tokenomics {
+    .jackpot-wrapper {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 25px;
+      align-items: center;
       margin-top: 40px;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .box {
-      background: #111a2e;
-      padding: 30px 25px;
-      border-radius: 16px;
-      min-width: 240px;
-      flex: 1;
-      max-width: 280px;
-      transition: 0.3s;
-      border: 1px solid rgba(45, 108, 255, 0.1);
+    .circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(#2d6cff 0% 72%, #1f2a44 72% 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 0 30px rgba(45,108,255,0.2);
     }
-    .box:hover { transform: translateY(-10px); }
 
-    .bar {
-      height: 12px;
-      background: #1f2a44;
-      border-radius: 999px;
-      margin-top: 15px;
-      overflow: hidden;
+    .circle::after {
+      content: '';
+      width: 130px;
+      height: 130px;
+      background: #0f1a2f;
+      border-radius: 50%;
+      position: absolute;
     }
-    .fill {
-      height: 100%;
-      background: linear-gradient(90deg, #2d6cff, #4da3ff);
+
+    .jackpot-value {
+      position: relative;
+      z-index: 2;
+      font-size: 20px;
+      font-weight: bold;
+      color: #2d6cff;
+      text-align: center;
     }
 
     .footer {
@@ -221,12 +223,10 @@
       background: #0a0f1c;
     }
 
-    /* 移动端 */
     @media (max-width: 768px) {
       .hero { min-height: auto; padding: 80px 15px 60px; }
       .hero::before { font-size: 220px; }
       .stats { gap: 35px; padding: 30px 15px; }
-      .section { padding: 60px 5% 70px; }
     }
   </style>
 </head>
@@ -238,7 +238,7 @@
     <div class="logo" data-i18n="logo">FBFC</div>
     <div class="nav">
       <a href="#" data-i18n="nav_home">Home</a>
-      <a href="#tokenomics" data-i18n="nav_tokenomics">Tokenomics</a>
+      <a href="#jackpot" data-i18n="nav_jackpot">Jackpot</a>
       <a href="#community" data-i18n="nav_community">Community</a>
       <button class="lang-btn" onclick="toggleLang()">EN / 中文</button>
     </div>
@@ -252,49 +252,27 @@
     </p>
     <div class="buttons">
       <a class="btn btn-primary" href="https://t.me/FBFC_TOKEN" target="_blank" data-i18n="join">Join Telegram</a>
-      <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank" data-i18n="whitepaper">Whitepaper</a>
       <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank" data-i18n="bbs">BBS</a>
     </div>
   </div>
 
   <div class="stats">
-    <div class="stat-item">
-      <div class="stat-number">50K+</div>
-      <div class="stat-label" data-i18n="fans">Football Fans</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">12</div>
-      <div class="stat-label" data-i18n="countries">Countries</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">∞</div>
-      <div class="stat-label" data-i18n="rewards">Rewards &amp; Governance</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label" data-i18n="community">Global Community</div>
-    </div>
+    <div class="stat-item"><div class="stat-number">50K+</div><div class="stat-label" data-i18n="fans">Fans</div></div>
+    <div class="stat-item"><div class="stat-number">12</div><div class="stat-label" data-i18n="countries">Countries</div></div>
+    <div class="stat-item"><div class="stat-number">∞</div><div class="stat-label" data-i18n="rewards">Rewards</div></div>
+    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label" data-i18n="community">Community</div></div>
   </div>
 
-  <div class="section" id="tokenomics">
-    <h2 data-i18n="tokenomics_title">Tokenomics</h2>
-    <div class="tokenomics">
-      <div class="box">
-        <h3 data-i18n="marketing">Marketing &amp; Incentives (85%)</h3>
-        <div class="bar"><div class="fill" style="width:85%"></div></div>
+  <div class="section" id="jackpot">
+    <h2 data-i18n="jackpot_title">Prize Pool</h2>
+    <div class="jackpot-wrapper">
+      <div class="circle">
+        <div class="jackpot-value">
+          $128,450<br>
+          <span data-i18n="jackpot_label">Jackpot Pool</span>
+        </div>
       </div>
-      <div class="box">
-        <h3 data-i18n="burn">Automatic Burn (10%)</h3>
-        <div class="bar"><div class="fill" style="width:10%"></div></div>
-      </div>
-      <div class="box">
-        <h3 data-i18n="dividends">Dividends (2%)</h3>
-        <div class="bar"><div class="fill" style="width:2%"></div></div>
-      </div>
-      <div class="box">
-        <h3 data-i18n="liquidity">Liquidity (3%)</h3>
-        <div class="bar"><div class="fill" style="width:3%"></div></div>
-      </div>
+      <p data-i18n="jackpot_desc">Current community reward pool distribution progress</p>
     </div>
   </div>
 
@@ -304,7 +282,6 @@
     <div class="buttons">
       <a class="btn btn-primary" href="https://t.me/FBFC_TOKEN" target="_blank" data-i18n="join">Telegram</a>
       <a class="btn btn-secondary" href="https://x.com/FBFC_TOKEN" target="_blank" data-i18n="twitter">X (Twitter)</a>
-      <a class="btn btn-secondary" href="https://bbs.footballfan.club" target="_blank" data-i18n="bbs">BBS Forum</a>
     </div>
   </div>
 
@@ -317,36 +294,46 @@
 <script>
 const i18n = {
   en: {
-    logo: "FBFC", nav_home: "Home", nav_tokenomics: "Tokenomics", nav_community: "Community",
+    logo: "FBFC",
+    nav_home: "Home",
+    nav_jackpot: "Jackpot",
+    nav_community: "Community",
     title: "FootballFanClub (FBFC)",
     desc: "A community-driven digital asset for football fans worldwide.<br>Built to reward participation, empower governance, and grow a global football ecosystem.",
-    join: "Join Telegram", whitepaper: "Whitepaper", bbs: "BBS",
-    tokenomics_title: "Tokenomics",
-    marketing: "Marketing &amp; Incentives (85%)",
-    burn: "Automatic Burn (10%)",
-    dividends: "Dividends (2%)",
-    liquidity: "Liquidity (3%)",
+    join: "Join Telegram",
+    bbs: "BBS",
+    fans: "Fans",
+    countries: "Countries",
+    rewards: "Rewards",
+    community: "Community",
+    jackpot_title: "Prize Pool",
+    jackpot_label: "Jackpot Pool",
+    jackpot_desc: "Current community reward pool distribution progress",
     community_title: "Join the Community",
     community_desc: "Join our Telegram and become part of the FBFC football ecosystem.",
     twitter: "X (Twitter)",
-    footer: "FootballFanClub (FBFC). All rights reserved.",
-    fans: "Football Fans", countries: "Countries", rewards: "Rewards &amp; Governance", community: "Global Community"
+    footer: "FootballFanClub (FBFC). All rights reserved."
   },
   zh: {
-    logo: "FBFC", nav_home: "首页", nav_tokenomics: "代币经济", nav_community: "社区",
+    logo: "FBFC",
+    nav_home: "首页",
+    nav_jackpot: "奖池",
+    nav_community: "社区",
     title: "足球粉丝俱乐部（FBFC）",
     desc: "一个以足球粉丝为核心的社区型数字资产，致力于奖励参与、赋能治理并构建全球足球生态系统。",
-    join: "加入Telegram", whitepaper: "白皮书", bbs: "论坛",
-    tokenomics_title: "代币经济",
-    marketing: "营销与激励（85%）",
-    burn: "自动销毁（10%）",
-    dividends: "分红（2%）",
-    liquidity: "流动性（3%）",
+    join: "加入Telegram",
+    bbs: "论坛",
+    fans: "粉丝",
+    countries: "国家",
+    rewards: "奖励",
+    community: "社区",
+    jackpot_title: "奖池",
+    jackpot_label: "奖池资金",
+    jackpot_desc: "当前社区奖励池分配进度",
     community_title: "加入社区",
     community_desc: "加入我们的Telegram，成为FBFC足球生态的一部分。",
-    twitter: "X（Twitter）",
-    footer: "FootballFanClub (FBFC)。保留所有权利。",
-    fans: "足球粉丝", countries: "覆盖国家", rewards: "奖励与治理", community: "全球社区"
+    twitter: "X（推特）",
+    footer: "FootballFanClub (FBFC)。保留所有权利。"
   }
 };
 
@@ -355,7 +342,7 @@ let currentLang = "en";
 function applyLang(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if (i18n[lang] && i18n[lang][key]) el.innerHTML = i18n[lang][key];
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
   });
 }
 
